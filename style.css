@@ -1,0 +1,23 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+  }
+  
+  .todo {
+    width: 300px;
+    margin: 100px auto;
+    background: white;
+    padding: 20px;
+  }
+  
+  li {
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+  }
+  
+  .done {
+    text-decoration: line-through;
+    color: gray;
+  }
+  
