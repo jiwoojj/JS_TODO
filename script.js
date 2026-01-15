@@ -1,29 +1,37 @@
-// const input = document.querySelector('#todoInput');
-// const addBtn = document.querySelector('#addBtn');
-// const list = document.querySelector('#todoList');
+﻿const input = document.querySelector('.todo_wrapper input');
+const addButton = document.querySelector('.more_btn');
+const list = document.querySelector('.todo_list_wrap');
 
-// addBtn.addEventListener('click', () => {
-//   const text = input.value;
-//   if (text === '') return;
+function addTodo() {
+  const text = input.value.trim();
+  if (!text) {
+    return;
+  }
 
-//   const li = document.createElement('li');
-//   li.textContent = text;
+  const item = document.createElement('li');
+  item.className = 'todo_item';
 
-//   li.addEventListener('click', () => {
-//     li.classList.toggle('done');
-//   });
+  const label = document.createElement('span');
+  label.textContent = text;
 
-//   const deleteBtn = document.createElement('button');
-//   deleteBtn.textContent = '삭제';
+  const deleteButton = document.createElement('button');
+  deleteButton.type = 'button';
+  deleteButton.className = 'delete_btn';
+  deleteButton.textContent = '삭제';
+  deleteButton.addEventListener('click', () => {
+    item.remove();
+  });
 
-//   deleteBtn.addEventListener('click', () => {
-//     li.remove();
-//   });
+  item.append(label, deleteButton);
+  list.appendChild(item);
 
-//   li.appendChild(deleteBtn);
-//   list.appendChild(li);
+  input.value = '';
+  input.focus();
+}
 
-//   input.value = '';
-// });
-
-// console.log("JS 연결됨!");
+addButton.addEventListener('click', addTodo);
+input.addEventListener('keydown', (event) => {
+  if (event.key === 'Enter') {
+    addTodo();
+  }
+});
